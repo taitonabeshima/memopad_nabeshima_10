@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myMemoPad</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="memo.css">
+
+</head>
+
+<header id="title">メモ帳📝</header>
+
+<main style="display: none;"> 
+    <!-- 最初に非表示 -->
+
+    <!-- ボタン -->
+    
+    <div>
+        <button id="save" class="btn">💾</button>
+        <button id="clear" class="btn">🗑️</button>
+    </div>
+    <!-- テキスト入力 -->
+    
+    <input type="text" id="key">
+    <div class="TA">
+        <textarea id="memo"></textarea>
+    </div>
+    
+    
+    <script>
+    $("main").fadeIn(1000);
+    
+    // $("#save").on("click",function(){
+    //     var value =$("#text_area").val();
+    //     localStorage.setItem("memo",value);
+    //     alert("Saveしました");
+    // });
+
+    $("#save").on("click",function(){
+        const key = $("#key").val();
+        const v = $("#memo").val();
+        localStorage.setItem("key",key);
+        localStorage.setItem("memo",v);
+        alert("保存しました");
+        //下に出すようなコードを記載する　　FOR分？
+
+    });
+
+    $("#clear").on("click",function(){
+        localStorage.removeItem("key");
+        localStorage.removeItem("memo");
+        $("#key").val("")
+        $("#memo").val("");
+        alert("削除しました");
+        //一つ一つ消す　FOR文？
+
+    });
+
+
+// 3. ページ読み込み
+    if(localStorage.getItem("memo")){
+        const key = localStorage.getItem("key");
+        const v = localStorage.getItem("memo");
+        $("#key").val(key);
+        $("#memo").val(v);
+    }
+
+    for(let i = 0; i < localStorage.length; i++){
+
+
+    }
+
+    
+    </script>
+
+</main>
+
+<body>
+
+
+</body>
+
+<footer>
+    <small></small>
+</footer>
+</html>
